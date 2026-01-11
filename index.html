@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Role Based Classroom</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #080606;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: rgb(174, 166, 174);
+      padding: 24px;
+      border-radius: 8px;
+      width: 320px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 12px;
+    }
+
+    select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    .action {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #010301;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Welcome</h2>
+
+    <label>Select Role</label>
+    <select id="roleSelect">
+      <option value="Student">Student</option>
+      <option value="Teacher">Teacher</option>
+    </select>
+
+    <button onclick="handleRole()">Proceed</button>
+
+    <div class="action" id="actionText"></div>
+  </div>
+
+  <script>
+    const user = {
+      Login: "akhila",
+      role: "Student"
+    };
+
+    function handleRole() {
+      const selectedRole = document.getElementById("roleSelect").value;
+      user.role = selectedRole;
+
+      const actionText = document.getElementById("actionText");
+
+      switch (user.role) {
+        case "Student":
+          actionText.textContent = "📚 Join the classroom";
+          break;
+
+        case "Teacher":
+          actionText.textContent = "🧑‍🏫 Create classroom";
+          break;
+      }
+
+      console.log(user);
+    }
+  </script>
+
+</body>
+</html>
